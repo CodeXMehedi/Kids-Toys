@@ -36,7 +36,7 @@ const Banner = () => {
        <SwiperSlide>
         <div className='w-full h-[500px]'>
           <img src="https://i.ibb.co.com/0pfMNMZ9/pexels-ali-yildirim-69448-243167.jpg" className='object-cover w-full h-full' alt="" />
-          <p className='absolute right-20 top-24  text-5xl leading-16'>Fun Has <br />Unlimited <br />Opportunities With <br /> Toy Galore</p>
+          <p className='absolute right-20 top-24  text-5xl leading-16 text-white'>Fun Has <br />Unlimited <br />Opportunities With <br /> Toy Galore</p>
         </div>
       </SwiperSlide> 
 
