@@ -37,7 +37,7 @@ const Navbar = () => {
             <span><ShoppingCart /></span>
             <span>Check Cart</span>
           </NavLink>
-          <Link  className="btn bg-[#FBE8D3] text-yellow-800 text-lg">Login</Link>
+          <Link to="/auth/login" className="btn bg-[#FBE8D3] text-yellow-800 text-lg">Login</Link>
         </div>
 
       </div>

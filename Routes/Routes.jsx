@@ -3,6 +3,8 @@ import Root from "../Pages/Root/Root";
 import Home from "../Pages/Home/Home";
 import { Suspense } from "react";
 import AvailableToys from "../Pages/AvailableToys/AvailableToys";
+import AuthLayout from "../Pages/AuthLayout/AuthLayout";
+import Login from "../src/Component/Login";
 
 
 const toysPromise = fetch('/ToysData.json').then(res => res.json());
@@ -22,8 +24,17 @@ export const router = createBrowserRouter([
         element: <Suspense fallback="Loading...">
           <AvailableToys toysPromise={toysPromise}></AvailableToys>
         </Suspense>
+      },
+    ]
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout></AuthLayout>,
+    children: [
+      {
+        path: "/auth/login",
+        element: <Login></Login>
       }
-      
     ]
   }
 ]);
