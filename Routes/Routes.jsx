@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router";
 import Root from "../Pages/Root/Root";
 import Home from "../Pages/Home/Home";
 import { Suspense } from "react";
-import AvailableToys from "../src/Component/AvailableToys";
+import AvailableToys from "../Pages/AvailableToys/AvailableToys";
+
 
 const toysPromise = fetch('/ToysData.json').then(res => res.json());
 export const router = createBrowserRouter([
@@ -15,7 +16,14 @@ export const router = createBrowserRouter([
         element: <Suspense fallback="Loading...">
           <Home toysPromise={toysPromise}></Home>
         </Suspense>
+      },
+      {
+        path: '/AvailableToy',
+        element: <Suspense fallback="Loading...">
+          <AvailableToys toysPromise={toysPromise}></AvailableToys>
+        </Suspense>
       }
+      
     ]
   }
 ]);

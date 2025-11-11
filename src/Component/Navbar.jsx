@@ -33,11 +33,11 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-4">
-          <Link className='flex gap-2'>
+          <NavLink to='/checkCart' className='flex gap-2'>
             <span><ShoppingCart /></span>
             <span>Check Cart</span>
-          </Link>
-          <Link className="btn bg-[#FBE8D3] text-yellow-800 text-lg">Login</Link>
+          </NavLink>
+          <Link  className="btn bg-[#FBE8D3] text-yellow-800 text-lg">Login</Link>
         </div>
 
       </div>

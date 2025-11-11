@@ -7,7 +7,7 @@ import { use } from 'react';
 const Home = ({ toysPromise }) => {
   const data = use(toysPromise);
   return (
-    <div className='bg-[#1C1F26]'>
+    <div className='bg-[#FBE8D3]'>
       <Banner></Banner>
       <SomeToys data={data}></SomeToys>
     </div>
