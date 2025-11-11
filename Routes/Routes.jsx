@@ -5,6 +5,8 @@ import { Suspense } from "react";
 import AvailableToys from "../Pages/AvailableToys/AvailableToys";
 import AuthLayout from "../Pages/AuthLayout/AuthLayout";
 import Login from "../src/Component/Login";
+import Registration from "../src/Component/Registration";
+
 
 
 const toysPromise = fetch('/ToysData.json').then(res => res.json());
@@ -34,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/auth/login",
         element: <Login></Login>
+      },
+      {
+        path: "/auth/register",
+        element: <Registration></Registration>
       }
     ]
   }

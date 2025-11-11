@@ -14,7 +14,7 @@ const Login = () => {
             <input type="password" className="input" placeholder="Password" />
             <div><a className="link link-hover">Forgot password?</a></div>
             <button className="btn btn-neutral mt-4 text-lg">Login</button>
-            <p className='font-semibold text-lg text-center pt-5'>Don't have an account? <NavLink className="text-red-500">Register</NavLink></p>
+            <p className='font-semibold text-lg text-center pt-5'>Don't have an account? <NavLink to='/auth/register' className="text-red-500">Register</NavLink></p>
           </fieldset>
         </div>
       </div>
