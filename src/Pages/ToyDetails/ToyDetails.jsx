@@ -1,0 +1,74 @@
+
+import { useLoaderData} from 'react-router';
+import Navbar from '../../Component/Navbar';
+import ToyDetailCard from '../../Component/ToyDetailCard';
+import { ToastContainer, toast } from 'react-toastify';
+
+const ToyDetails = () => {
+  const toyData = useLoaderData();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast("Also added in the Cart")
+  }
+
+  const fullStars = Math.floor(toyData.rating);
+  const halfStar = toyData.rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  const { toyName, sellerName, sellerEmail, price, rating, availableQuantity, description, pictureURL, subCategory } = toyData;
+  return (
+    <div>
+      <header>
+        <Navbar></Navbar>
+      </header>
+      <main className='w-10/12 m-auto '>
+        <h2 className='text-center text-6xl font-bold text-[#B8860B] mt-6' >Toy Details</h2>
+        <h3 className='text-center text-2xl font-semibold text-[#B8860B] mt-2'>{toyName}</h3>
+        <div className=' flex justify-center gap-4 mt-6'>
+          <img className='w-5/12' src={pictureURL} alt="" />
+          <div className='text-lg'>
+            <div className="flex  items-center text-yellow-500">
+              {"★".repeat(fullStars)}
+              {halfStar && <span className="text-yellow-300">★</span>}
+              {"☆".repeat(emptyStars)}
+              <p className='text-lg my-2 text-[#B8860B] px-4'>{rating}</p>
+            </div>
+            <p className='text-xl'>{description}</p>
+            <p > <span className='text-[#B8860B] text-xl'>Subcategory:</span> {subCategory}</p>
+            <div className='flex justify-between mt-10 font-semibold text-2xl'>
+              <p>Available Quantity: {availableQuantity}</p>
+              <p >{price}</p>
+            </div>
+            <div className='mt-6'>
+              <h6 className='font-bold'>Seller:</h6>
+              <p>{sellerName}</p>
+              <p className='font-semibold'>Email: {sellerEmail}</p>
+            </div>
+          </div>
+          
+        </div>
+        <div className='w-11/12 flex justify-center  mx-auto'>
+          <div className='w-4/12'>
+            <h6 className='font-bold text-4xl text-center mt-4'>Try It Now!!!</h6>
+            <form onSubmit={handleSubmit} className="card-body ">
+              <fieldset className="fieldset text-lg">
+
+                <label className="label">Name</label>
+                <input name='name' type="text" className="input" placeholder="Name" required />
+
+                <label className="label">Email</label>
+                <input name='email' type="email" className="input" placeholder="Email" required />
+
+                <button type='submit' className="btn btn-neutral mt-4 text-lg">Try Now</button>
+              </fieldset>
+            </form>
+          </div>
+       </div>
+      </main>
+      <ToastContainer />
+    </div>
+  );
+};
+
+export default ToyDetails;

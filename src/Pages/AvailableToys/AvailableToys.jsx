@@ -1,5 +1,6 @@
 import React, { use } from 'react';
-import AvailableToysCard from '../../src/Component/AvailableToysCard';
+import AvailableToysCard from '../../Component/AvailableToysCard';
+
 
 const AvailableToys = ({ toysPromise }) => {
   const toys = use(toysPromise);

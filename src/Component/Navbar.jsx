@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { ShoppingCart } from 'lucide-react';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
+  const { user,logOut } = use(AuthContext);
+
+  const handleLogOut = () => {
+    console.log("Trying to LogOut");
+    logOut()
+      .then(() => {
+        alert("Logged Out successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const links = <>
     <nav className='flex gap-4 text-white text-lg'>
       <NavLink to='/'>Home</NavLink>
@@ -22,9 +35,11 @@ const Navbar = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
               {links}
+              
             </ul>
           </div>
           <a className="btn btn-ghost text-3xl italic text-white ">Cats Eye</a>
+          <div className='w-10 h-10'>{user && user.photoURL}</div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -37,7 +52,8 @@ const Navbar = () => {
             <span><ShoppingCart /></span>
             <span>Check Cart</span>
           </NavLink>
-          <Link to="/auth/login" className="btn bg-[#FBE8D3] text-yellow-800 text-lg">Login</Link>
+          {user ? <button onClick={handleLogOut} className="btn bg-[#FBE8D3] text-yellow-800 text-lg">Log Out</button> : <Link to="/auth/login" className="btn bg-[#FBE8D3] text-yellow-800 text-lg">Login</Link>}
+         
         </div>
 
       </div>

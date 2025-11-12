@@ -1,14 +1,12 @@
 import { createBrowserRouter } from "react-router";
+import { Suspense } from "react";
 import Root from "../Pages/Root/Root";
 import Home from "../Pages/Home/Home";
-import { Suspense } from "react";
 import AvailableToys from "../Pages/AvailableToys/AvailableToys";
 import AuthLayout from "../Pages/AuthLayout/AuthLayout";
-import Login from "../src/Component/Login";
-import Registration from "../src/Component/Registration";
-
-
-
+import Login from "../Component/Login";
+import Registration from "../Component/Registration"
+import ToyDetails from "../Pages/ToyDetails/ToyDetails";
 const toysPromise = fetch('/ToysData.json').then(res => res.json());
 export const router = createBrowserRouter([
   {
@@ -31,7 +29,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/auth",
-    element: <AuthLayout></AuthLayout>,
+    element:<AuthLayout></AuthLayout>,
     children: [
       {
         path: "/auth/login",
@@ -42,5 +40,17 @@ export const router = createBrowserRouter([
         element: <Registration></Registration>
       }
     ]
+  },
+  {
+    path: "/toy-details/:id",
+    element: <ToyDetails></ToyDetails>,
+    loader: ({ params }) => {
+      return fetch('/ToysData.json')
+        .then(res => res.json())
+        .then(data => {
+          const toy = data.find(item => item.toyId === Number(params.id));
+          return toy;
+        });
+    }
   }
 ]);

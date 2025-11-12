@@ -1,7 +1,7 @@
 import React from 'react';
-import Banner from '../../src/Component/Banner';
-import SomeToys from '../../src/Component/SomeToys';
 import { use } from 'react';
+import Banner from '../../Component/Banner';
+import SomeToys from '../../Component/SomeToys';
 
 
 const Home = ({ toysPromise }) => {

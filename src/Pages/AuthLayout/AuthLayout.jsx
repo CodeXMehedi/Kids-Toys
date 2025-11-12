@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../../src/Component/Navbar';
 import { Outlet } from 'react-router';
+import Navbar from '../../Component/Navbar';
 
 
 const AuthLayout = () => {
