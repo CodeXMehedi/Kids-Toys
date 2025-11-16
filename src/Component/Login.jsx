@@ -4,7 +4,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Eye, EyeClosed } from 'lucide-react';
 import { toast } from 'react-toastify';
-
+import DocumentMeta from 'react-document-meta';
 const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
@@ -16,6 +16,17 @@ const Login = () => {
   const { user, signIn, setUser, signInWithGoogle } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const meta = {
+    title: "Login | Kids Toys Market",
+    description: "Login to your Kids Toys Market account to access toys, wishlist, and dashboard.",
+    meta: {
+      charset: "utf-8",
+      name: {
+        keywords: "login, account login, kids toys, toy shop login, user authentication"
+      }
+    }
+  };
 
   console.log(location)
   const handleLogIn = (e) => {
@@ -64,6 +75,7 @@ const Login = () => {
 
  
   return (
+    <DocumentMeta {...meta}>
     <div className='flex justify-center items-center  min-h-screen'>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-4 ">
         <h2 className='text-center font-semibold text-2xl  '>Login Your Account</h2>
@@ -104,7 +116,8 @@ const Login = () => {
           </fieldset>
         </form>
       </div>
-    </div>
+      </div>
+    </DocumentMeta>
   );
 };
 

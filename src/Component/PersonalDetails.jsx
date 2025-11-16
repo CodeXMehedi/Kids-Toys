@@ -3,12 +3,22 @@ import { AuthContext } from '../provider/AuthProvider';
 import Navbar from './Navbar';
 import { getAuth, updateProfile } from "firebase/auth";
 const auth = getAuth();
+import DocumentMeta from 'react-document-meta';
 
 const PersonalDetails = () => {
 
   const { user, setUser } = use(AuthContext);
 
-  
+  const meta = {
+    title: "Personal Details | Kids Toys Market",
+    description: "View and update your personal profile information.",
+    meta: {
+      charset: "utf-8",
+      name: {
+        keywords: "profile, user details, update profile, kids toys account"
+      }
+    }
+  };
   const newProfile = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -28,7 +38,9 @@ const PersonalDetails = () => {
 
   }
   return (
+    <DocumentMeta {...meta}>
     <div >
+
       <Navbar></Navbar>
       <div className='w-8/12  m-auto'>
         <div className='flex  justify-center gap-4 items-center text-lg'>
@@ -53,7 +65,8 @@ const PersonalDetails = () => {
         
         
     </div>
-    </div>
+      </div>
+    </DocumentMeta>
   );
 };
 

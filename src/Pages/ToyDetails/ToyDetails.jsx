@@ -3,7 +3,7 @@ import { useLoaderData} from 'react-router';
 import Navbar from '../../Component/Navbar';
 import ToyDetailCard from '../../Component/ToyDetailCard';
 import { ToastContainer, toast } from 'react-toastify';
-
+import DocumentMeta from 'react-document-meta';
 const ToyDetails = () => {
   const toyData = useLoaderData();
 
@@ -17,7 +17,19 @@ const ToyDetails = () => {
   const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
   const { toyName, sellerName, sellerEmail, price, rating, availableQuantity, description, pictureURL, subCategory } = toyData;
+
+  const meta = {
+    title: `${toyName} | Kids Toys Market`,
+    description: `Buy ${toyName} in the ${subCategory} category. Seller: ${sellerName}, Price: ${price}. Available quantity: ${availableQuantity}.`,
+    meta: {
+      charset: "utf-8",
+      name: {
+        keywords: `${toyName}, ${subCategory}, toy details, kids toys, ${sellerName}`
+      }
+    }
+  };
   return (
+    <DocumentMeta {...meta}>
     <div>
       <header>
         <Navbar></Navbar>
@@ -67,7 +79,8 @@ const ToyDetails = () => {
        </div>
       </main>
       <ToastContainer />
-    </div>
+      </div>
+    </DocumentMeta>
   );
 };
 

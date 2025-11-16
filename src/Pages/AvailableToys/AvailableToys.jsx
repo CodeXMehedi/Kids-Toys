@@ -1,11 +1,23 @@
 import React, { use } from 'react';
 import AvailableToysCard from '../../Component/AvailableToysCard';
-
+import DocumentMeta from 'react-document-meta'
 
 const AvailableToys = ({ toysPromise }) => {
+
   const toys = use(toysPromise);
+  const meta = {
+    title: "Available Toys | Kids Toys Market",
+    description: "Browse all available toys from our collection.",
+    meta: {
+      charset: "utf-8",
+      name: {
+        keywords: "toys, kids toys, available toys, toy store"
+      }
+    }
+  };
   return (
     < >
+      <DocumentMeta {...meta}>
       <div className='bg-gray-100 h-screen-full'>
         <h1 className='text-6xl font-bold text-center text-gray-700 mt-10' >Cats Eye</h1>
         <h1 className='text-[#B8860B] font-semibold text-3xl text-center'>Explore our toy wonderland</h1>
@@ -17,7 +29,8 @@ const AvailableToys = ({ toysPromise }) => {
           }
 
         </div>
-  </div>
+        </div>
+      </DocumentMeta>
     </>
   );
 };

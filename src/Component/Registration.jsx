@@ -5,9 +5,19 @@ import { use, useState } from 'react';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Eye, EyeClosed } from 'lucide-react';
 import { toast } from 'react-toastify';
-
+import DocumentMeta from 'react-document-meta';
 const googleProvider = new GoogleAuthProvider();
 const Registration = () => {
+  const meta = {
+    title: "Register | Kids Toys Market",
+    description: "Create your account at Kids Toys Market to explore premium toys, manage your wishlist, and shop easily.",
+    meta: {
+      charset: "utf-8",
+      name: {
+        keywords: "register, create account, signup, user registration, kids toys market"
+      }
+    }
+  };
   
   const { createUser, setUser, updateUser, signInWithGoogle, user } = use(AuthContext);
 
@@ -84,6 +94,7 @@ const Registration = () => {
     setShowPassword(!showPassword);
   }
   return (
+    <DocumentMeta {...meta}>
     <div className='flex justify-center items-center  min-h-screen'>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
         <h2 className='text-center font-semibold text-2xl  '>Register Your Account</h2>
@@ -123,7 +134,8 @@ const Registration = () => {
           </fieldset>
         </form>
       </div>
-    </div>
+      </div>
+    </DocumentMeta>
   );
 };
 
