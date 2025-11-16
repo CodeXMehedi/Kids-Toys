@@ -3,6 +3,8 @@ import { use } from 'react';
 import Banner from '../../Component/Banner';
 import SomeToys from '../../Component/SomeToys';
 import DocumentMeta from 'react-document-meta';
+import PopularBrands from '../../Component/PopularBrands';
+import WhyChooseUs from '../../Component/WhyChooseUs';
 
 const Home = ({ toysPromise }) => {
   const data = use(toysPromise);
@@ -23,7 +25,8 @@ const Home = ({ toysPromise }) => {
       
       <Banner></Banner>
       <SomeToys data={data}></SomeToys>
-
+        <PopularBrands></PopularBrands>
+        <WhyChooseUs></WhyChooseUs>
       </div>
     </DocumentMeta>
   );
