@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 const AvailableToysCard = ({ toy }) => {
-    
+  const { toyId } = toy;
   const fullStars = Math.floor(toy.rating);
   const halfStar = toy.rating % 1 >= 0.5;
   const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
@@ -22,7 +22,7 @@ const AvailableToysCard = ({ toy }) => {
         <p>{toy.price}</p>
       </div>
       <div className='flex justify-center my-4' >
-        <Link className='btn bg-[#B8860B]'>View more</Link>
+        <Link to={`/toy-details/${toyId }`} className='btn bg-[#B8860B]'>View more</Link>
       </div>
     </div>
   );

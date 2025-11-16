@@ -7,9 +7,11 @@ import SomeToys from '../../Component/SomeToys';
 const Home = ({ toysPromise }) => {
   const data = use(toysPromise);
   return (
-    <div className='bg-[#FBE8D3]'>
+    <div className='bg-[#FBE8D3] mt-10 lg:mt-0'>
+      
       <Banner></Banner>
       <SomeToys data={data}></SomeToys>
+
     </div>
   );
 };

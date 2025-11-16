@@ -1,38 +1,87 @@
 
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
-import { use } from 'react';
+import { use, useState } from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { Eye, EyeClosed } from 'lucide-react';
+import { toast } from 'react-toastify';
 
-
+const googleProvider = new GoogleAuthProvider();
 const Registration = () => {
-  const { createUser, setUser, updateUser } = use(AuthContext);
+  
+  const { createUser, setUser, updateUser, signInWithGoogle, user } = use(AuthContext);
+
+  
+  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
+    if (name.length < 5) {
+      setError("Name should be more then 5 character");
+      return;
+    }
+    else {
+      setError('');
+    }
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ name, photo, email, password });
+    // console.log({ name, photo, email, password });
+
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    if (!passwordPattern.test(password)) {
+      setError('Password must be at least 6 characters long, and include at least one uppercase, one lowercase, and one special character');
+      return
+    }
     createUser(email, password).then((result) => {
       const user = result.user;
-      // console.log(user);
+      
       updateUser({ displayName: name, photoURL: photo })
         .then(() => {
+         
           setUser({ ...user, displayName: name, photoURL: photo });
+          navigate("/");
         })
         .catch((error) => {
           console.log(error);
           setUser(user);
         });
       
+  toast('Register Successfully');
+
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage, errorCode);
-      // ..
+      if (errorCode && errorMessage) {
+        toast(errorMessage, errorCode);
+      }
+      
     });
+    
+  }
+  const handleGoogleSignIn = () => {
+
+    signInWithGoogle(googleProvider)
+      .then(result => {
+        // console.log(result.user);
+        setUser(result.user);
+        
+        navigate("/");
+        toast('Register Successfully');
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    
+  }
+
+  const handleTogglePasswordShow = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
   }
   return (
     <div className='flex justify-center items-center  min-h-screen'>
@@ -42,17 +91,34 @@ const Registration = () => {
           <fieldset className="fieldset">
             <label className="label">Name</label>
             <input name='name' type="text" className="input" placeholder="Name" required />
-
+            
             <label className="label">Photo URL</label>
             <input name='photo' type="text" className="input" placeholder="Photo URL" required />
 
             <label className="label">Email</label>
             <input name='email' type="email" className="input" placeholder="Email" required />
 
-            <label className="label">Password</label>
-            <input name='password' type="password" className="input" placeholder="Password" required />
-
+            <div className='relative'>
+              <label className="label">Password</label>
+              <input
+                name='password'
+                type={showPassword ? 'text' : "password" }
+                className="input"
+                placeholder="Password"
+                required />
+              <button
+                onClick={handleTogglePasswordShow}
+                className='absolute right-8 top-6'>
+                {showPassword ? <Eye></Eye> : <EyeClosed></EyeClosed>}
+              </button >
+            </div>
+            {error && <p className="text-xs text-error">{error}</p>}
             <button type='submit' className="btn btn-neutral mt-4 text-lg">Register</button>
+            <p className='text-center text-lg'>Or</p>
+            {
+              !user &&
+              <button className='btn btn-neutral mt-4 text-sm' onClick={handleGoogleSignIn}>Register With Google</button>
+            }
             <p className='font-semibold text-center pt-5 text-lg'>Allready have an account? <NavLink to='/auth/login' className="text-red-500">Login</NavLink></p>
           </fieldset>
         </form>

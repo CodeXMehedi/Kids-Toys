@@ -21,22 +21,22 @@ const Banner = () => {
       loop={true}
     >
      <SwiperSlide>
-        <div className='w-full h-[500px] relative'>
+        <div className='w-300px lg:w-full h-[200px] lg:h-[500px] relative'>
           <img src="https://i.ibb.co.com/qFXk8zjF/pexels-yankrukov-8429915.jpg" className='object-cover w-full h-full' alt="" />
-          <p className='text-5xl font-bold leading-20 text-[#8B5E3C] absolute top-20 left-20'>Playtime Perfection: <br /> Unleash Your <br /> Inner Child</p>
+          <p className='lg:text-5xl font-bold lg:leading-20 text-[#8B5E3C] absolute top-20 left-20'>Playtime Perfection: <br /> Unleash Your <br /> Inner Child</p>
         </div>
       </SwiperSlide> 
 
       <SwiperSlide>
-        <div className='w-full h-[500px]'>
+        <div className='w-300px lg:w-full h-[200px] lg:h-[500px] '>
           <img src="https://i.ibb.co.com/1JKWH9cX/pexels-laurie-ludes-546238-6017193.jpg" className='object-cover w-full h-full relative' alt="" />
-          <p className='absolute right-20 top-10 font-semibold text-5xl leading-16'>A World of Wonder <br /> Awaits: <br /> Explore Our <br /> Toy Wonderland</p>
+          <p className='absolute right-20 top-10 font-semibold lg:text-5xl lg:leading-16'>A World of Wonder <br /> Awaits: <br /> Explore Our <br /> Toy Wonderland</p>
         </div>
       </SwiperSlide>
        <SwiperSlide>
-        <div className='w-full h-[500px]'>
+        <div className='w-300px lg:w-full h-[200px] lg:h-[500px] '>
           <img src="https://i.ibb.co.com/0pfMNMZ9/pexels-ali-yildirim-69448-243167.jpg" className='object-cover w-full h-full' alt="" />
-          <p className='absolute right-20 top-24  text-5xl leading-16 text-white'>Fun Has <br />Unlimited <br />Opportunities With <br /> Toy Galore</p>
+          <p className='absolute right-20 top-24  lg:text-5xl lg:leading-16 text-white'>Fun Has <br />Unlimited <br />Opportunities With <br /> Toy Galore</p>
         </div>
       </SwiperSlide> 
 
