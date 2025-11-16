@@ -5,6 +5,7 @@ import SomeToys from '../../Component/SomeToys';
 import DocumentMeta from 'react-document-meta';
 import PopularBrands from '../../Component/PopularBrands';
 import WhyChooseUs from '../../Component/WhyChooseUs';
+import Footer from '../../Component/Footer';
 
 const Home = ({ toysPromise }) => {
   const data = use(toysPromise);
@@ -23,10 +24,12 @@ const Home = ({ toysPromise }) => {
     <DocumentMeta {...meta}>
     <div className='bg-[#FBE8D3] mt-10 lg:mt-0'>
       
-      <Banner></Banner>
-      <SomeToys data={data}></SomeToys>
+        <Banner></Banner>
         <PopularBrands></PopularBrands>
+      <SomeToys data={data}></SomeToys>
+       
         <WhyChooseUs></WhyChooseUs>
+        <Footer></Footer>
       </div>
     </DocumentMeta>
   );

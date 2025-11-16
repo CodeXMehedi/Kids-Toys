@@ -36,7 +36,7 @@ const PopularBrands = () => {
             <img
               src={brand.img}
               alt={brand.name}
-              className="w-40 h-40 rounded-full object-cover shadow-md hover:scale-110 transition-1s"
+              className="w-40 h-40 rounded-full object-cover shadow-md hover:scale-120 transition-1s"
             />
             <p className="mt-3 text-lg font-semibold">{brand.name}</p>
           </div>
