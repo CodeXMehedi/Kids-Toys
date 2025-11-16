@@ -27,8 +27,8 @@ const Login = () => {
    
     // console.log({ email, password });
     signIn(email, password)
-      .then((result) => {
-        const user = result.user;
+      .then(() => {
+        // const user = result.user;
         // console.log(user);
         navigate(`${location.state ? location.state : "/"}`)
         navigateTo("/");
