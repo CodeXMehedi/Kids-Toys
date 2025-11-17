@@ -14,17 +14,24 @@ const Footer = () => {
             <a href="">About</a>
             <a href="">Blog</a>
             <a href="">FAQ</a>
-            <a href="">Privacy Policy</a>
-            <a href="">Terms & Conditions</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms">Terms & Conditions</a>
           </div>
         </div>
         <div className='flex-1 m-auto text-center '>
           <p>Social Links</p>
           <div className='flex  h-full justify-center items-center mt-2  gap-4'>
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+              <i className="fa-brands fa-x-twitter"></i>
+            </a>
 
-            <i class="fa-brands fa-x-twitter"></i>
-            <i class="fa-brands fa-linkedin-in"></i>
-            <i class="fa-brands fa-facebook"></i>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+              <i className="fa-brands fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
+              <i className="fa-brands fa-facebook"></i>
+            </a>
           </div>
         </div>
       </div>

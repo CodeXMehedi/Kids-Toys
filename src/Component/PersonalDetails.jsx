@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import { getAuth, updateProfile } from "firebase/auth";
 const auth = getAuth();
 import DocumentMeta from 'react-document-meta';
+import Footer from './Footer';
 
 const PersonalDetails = () => {
 
@@ -38,12 +39,13 @@ const PersonalDetails = () => {
 
   }
   return (
+    <>
     <DocumentMeta {...meta}>
     <div >
 
       <Navbar></Navbar>
-      <div className='w-8/12  m-auto'>
-        <div className='flex  justify-center gap-4 items-center text-lg'>
+      <div className='lg:w-8/12 w-11/12  m-auto my-10'>
+        <div className='flex flex-col lg:flex-row  justify-center gap-4 items-center text-lg'>
           <img className=' max-w-7/12  max-h-110 border-2 border-gray-500' src={user.photoURL} alt="" />
           <div>
             <h2 ><span className='font-bold'>Name:</span>   {user.displayName}</h2>
@@ -65,8 +67,10 @@ const PersonalDetails = () => {
         
         
     </div>
-      </div>
-    </DocumentMeta>
+        </div>
+        <Footer></Footer>
+      </DocumentMeta>
+    </>
   );
 };
 

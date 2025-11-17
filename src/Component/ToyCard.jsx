@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+
 const ToyCard = ({ toy }) => {
   const {toyId} = toy;
 
@@ -9,8 +10,8 @@ const ToyCard = ({ toy }) => {
   const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
   return (
-    <div className='p-4 bg-white rounded-lg shadow-lg'>
-      <img className='h-[250px]' src={toy.pictureURL} alt="" />
+    <div className='lg:p-4 md:p-4 p-2 bg-white rounded-lg shadow-lg'>
+      <img className='lg:h-[250px] rounded-sm' src={toy.pictureURL} alt="" />
       <h3 className='text-xl font-semibold text-[#A55E2A]'> {toy.toyName} </h3>
       <div className="flex items-center text-yellow-500">
         {"★".repeat(fullStars)}
@@ -23,7 +24,7 @@ const ToyCard = ({ toy }) => {
         <p>{toy.price}</p>
       </div>
       <div className='flex justify-center my-4' >
-        <Link to={`/toy-details/${toyId}`}   className='btn bg-[#C47F4A]'>View more</Link>
+        <Link to={`/toy-details/${toyId}`} className='btn bg-[#A55E2A]'>View More</Link>
       </div>
     </div>
   );

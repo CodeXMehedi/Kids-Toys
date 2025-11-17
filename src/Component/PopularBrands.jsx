@@ -30,15 +30,15 @@ const PopularBrands = () => {
         Popular Toy Brands
       </h2>
 
-      <div className="flex justify-center gap-10 w-10/12 mx-auto">
+      <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:justify-center gap-10 w-10/12 mx-auto">
         {brands.map((brand, index) => (
-          <div key={index} className="text-center">
+          <div key={index} className="flex flex-col items-center justify-center ">
             <img
               src={brand.img}
               alt={brand.name}
-              className="w-40 h-40 rounded-full object-cover shadow-md hover:scale-120 transition-1s"
+              className="w-40 h-40  rounded-full object-cover shadow-md hover:scale-120 transition-1s"
             />
-            <p className="mt-3 text-lg font-semibold">{brand.name}</p>
+            <p className="mt-3  text-lg font-semibold">{brand.name}</p>
           </div>
         ))}
       </div>

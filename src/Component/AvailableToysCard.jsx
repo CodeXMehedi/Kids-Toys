@@ -8,8 +8,10 @@ const AvailableToysCard = ({ toy }) => {
 
   return (
 
-    <div className='p-4 bg-white rounded-lg shadow-lg'>
-      <img className='h-[250px]' src={toy.pictureURL} alt="" />
+    <div className='p-4 bg-white rounded-lg shadow-lg flex flex-col'>
+      <div className='flex-1'>
+        <img className='lg:h-[250px]' src={toy.pictureURL} alt="" />
+     </div>
       <h3 className='text-xl font-semibold text-[#B8860B]'> {toy.toyName} </h3>
       <div className="flex items-center text-yellow-500">
         {"★".repeat(fullStars)}

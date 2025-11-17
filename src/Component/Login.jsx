@@ -76,7 +76,7 @@ const Login = () => {
  
   return (
     <DocumentMeta {...meta}>
-    <div className='flex justify-center items-center  min-h-screen'>
+    <div className='flex justify-center items-center  lg:min-h-screen my-10'>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-4 ">
         <h2 className='text-center font-semibold text-2xl  '>Login Your Account</h2>
         <form onSubmit={handleLogIn} className="card-body ">

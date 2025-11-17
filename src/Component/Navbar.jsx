@@ -18,7 +18,7 @@ const Navbar = () => {
       });
   };
   const links = <>
-    <nav className='flex flex-col lg:flex-row gap-4 text-white text-lg'>
+    <nav className='flex gap-2  lg:gap-4 lg:text-white text-lg'>
       <NavLink to='/'>Home</NavLink>
       <NavLink to='/AvailableToy'>Available Toys</NavLink>
       <NavLink to='/personalDetails'>Personal Details</NavLink>
@@ -26,21 +26,21 @@ const Navbar = () => {
   </>
 
   return (
-    <div className='bg-[#F28500] shadow-sm lg:sticky top-0 opacity-70 '>
-      <div className="navbar w-11/12 m-auto">
-        <div className="navbar-start">
-          <div className="dropdown">
+    <div className='bg-[#F28500] shadow-sm lg:sticky top-0 opacity-70 relative z-50'>
+      <div className="navbar w-full md:w-11/12 lg:w-11/12 m-auto">
+        <div className="navbar-start ">
+          <div className="dropdown ">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
             </div>
             <ul
-              tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              tabIndex="0"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box w-55 md:w-70 p-2 shadow absolute top-full left-0 z-50 mt-3"
+            >
               {links}
-             
             </ul>
           </div>
-          <a className="btn btn-ghost text-3xl italic text-white ">Cats Eye</a>
+          <a className="lg:btn lg:btn-ghost text-3xl italic text-white ">Cats Eye</a>
           
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -50,8 +50,8 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="navbar-end flex flex-col lg:flex-row gap-4">
-          <NavLink to='/checkCart' className='flex gap-2'>
+        <div className="navbar-end flex flex-col md:flex-row lg:flex-row lg:gap-4 md:gap-4 gap-2">
+          <NavLink to='/cart' className='flex lg:gap-2 md:gap-2 gap-1 text-white mt-2 lg:mt-0'>
             <span><ShoppingCart /></span>
             <span>Check Cart</span>
           </NavLink>
@@ -59,7 +59,7 @@ const Navbar = () => {
             src={`${user ? user.photoURL : userDefaultLogo}`}
             title={user?.displayName || 'User name'}
             alt="" />
-          {user ? <button onClick={handleLogOut} className="btn bg-[#FBE8D3] text-yellow-800 text-lg">Log Out</button> : <Link to="/auth/login" className="btn bg-[#FBE8D3] text-yellow-800 text-lg">Login</Link>}
+          {user ? <button onClick={handleLogOut} className="md:btn lg:btn p-1 lg:p-0 rounded-sm shadow-lg bg-[#FBE8D3] text-yellow-800 text-lg">Log Out</button> : <Link to="/auth/login" className="lg:btn md:btn bg-[#FBE8D3] text-yellow-800 text-lg">Login</Link>}
          
         </div>
 

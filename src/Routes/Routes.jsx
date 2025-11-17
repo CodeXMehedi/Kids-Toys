@@ -13,6 +13,9 @@ import AnotherPrivateRoute from "../provider/AnotherPrivateRoute";
 import PersonalDetails from "../Component/PersonalDetails";
 import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
 import Loading from "../Pages/Loading";
+import PrivacyPolicy from "../Component/PrivacyPolicy";
+import Terms from "../Component/Terms";
+import Cart from "../Pages/Cart/Cart";
 
 
 const toysPromise = fetch('/ToysData.json').then(res => res.json());
@@ -70,10 +73,26 @@ export const router = createBrowserRouter([
     element: <PrivateRoute>
       <PersonalDetails></PersonalDetails>
     </PrivateRoute>,
+    hydrateFallbackElement: <Loading></Loading>
   },
   {
     path: '/auth/forgot-password',
     element:<ForgotPassword></ForgotPassword>
+  },
+  {
+    path: "/privacy-policy",
+    element: <PrivacyPolicy></PrivacyPolicy>
+  },
+  {
+    path: "/terms",
+    element: <Terms></Terms>
+  }, 
+  {
+    path: '/cart',
+    element: <PrivateRoute>
+      <Cart></Cart>
+    </PrivateRoute>,
+    loader: () => fetch('/ToysData.json')
   }
   
 ]);
