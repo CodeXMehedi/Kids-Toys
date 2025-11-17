@@ -28,7 +28,7 @@ const Login = () => {
     }
   };
 
-  console.log(location)
+  // console.log(location)
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
